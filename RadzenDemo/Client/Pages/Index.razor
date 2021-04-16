@@ -1,0 +1,32 @@
+﻿@page "/"
+@using Radzen.Blazor
+
+
+
+<h1>Radzen DropDown in .NET 6.0 Preview 3</h1>
+
+<RadzenDropDown 
+    Multiple="true" 
+    TValue="Customer"
+    Placeholder="Select..." 
+    Data="@customers" 
+    TextProperty="CompanyName" 
+    ValueProperty="CustomerID"  
+    @bind-bind-Value="@selectedCustomers"/>
+
+@code {
+    public IList<Customer> customers = new List<Customer>
+    {
+        new Customer { CustomerID = 100, CompanyName="Foo, Inc." },
+        new Customer { CustomerID = 200, CompanyName="Markesan" },
+        new Customer { CustomerID = 300, CompanyName="JMP Enterprises" }
+    };
+
+    public IList<Customer> selectedCustomers = new List<Customer>();
+
+    public class Customer
+    {
+        public int CustomerID {get; set;}
+        public string CompanyName {get; set; }
+    }
+}
